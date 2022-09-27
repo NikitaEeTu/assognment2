@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace assognment2
 {
     public partial class Form1 : Form
@@ -7,7 +9,6 @@ namespace assognment2
             Double price_of_a_seats = calculateRevenuePerClass(a_seats_number, "A");
             Double price_of_b_seats = calculateRevenuePerClass(b_seats_number, "B");
             Double price_of_c_seats = calculateRevenuePerClass(c_seats_number, "C");
-            Console.WriteLine(price_of_a_seats);
             return price_of_a_seats + price_of_b_seats + price_of_c_seats;
         }
         private Double calculateRevenuePerClass(int number_of_seats, String className)
@@ -45,7 +46,7 @@ namespace assognment2
 
         private void clearAllInputs()
         {
-            TextBox[] all_inputs = new TextBox[] { textBox1, textBox2, textBox3 }; 
+            TextBox[] all_inputs = new TextBox[] { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7}; 
 
             foreach(TextBox input in all_inputs)
             {
@@ -80,11 +81,11 @@ namespace assognment2
             Int32 b_seat_number = checkIfInputIsNumeric(textBox2.Text);
             Int32 c_seat_number = checkIfInputIsNumeric(textBox3.Text);
 
-            textBox4.Text = String.Format("{0:0.00}$", calculateRevenuePerClass(a_seat_number, "A"));
-            textBox5.Text = String.Format("{0:0.00}$", calculateRevenuePerClass(b_seat_number, "B"));
-            textBox6.Text = String.Format("{0:0.00}$", calculateRevenuePerClass(c_seat_number, "C"));
+            textBox6.Text = calculateRevenuePerClass(a_seat_number, "A").ToString("C3", CultureInfo.CreateSpecificCulture("en-US"));
+            textBox5.Text = calculateRevenuePerClass(b_seat_number, "B").ToString("C3", CultureInfo.CreateSpecificCulture("en-US"));
+            textBox4.Text = calculateRevenuePerClass(c_seat_number, "C").ToString("C3", CultureInfo.CreateSpecificCulture("en-US"));
 
-            textBox7.Text = String.Format("{0:0.00}$", calculateRevenue(a_seat_number, b_seat_number, c_seat_number));
+            textBox7.Text = calculateRevenue(a_seat_number, b_seat_number, c_seat_number).ToString("C3", CultureInfo.CreateSpecificCulture("en-US"));
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
